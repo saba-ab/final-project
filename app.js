@@ -41,3 +41,12 @@ function isElementInViewport(element) {
     window.innerHeight || document.documentElement.clientHeight;
   return rect.top >= 0 && rect.top <= windowHeight - element.offsetHeight;
 }
+// scroll on click
+function scrollToSection(sectionId) {
+  const targetSection = document.getElementById(sectionId);
+  const offsetTop = targetSection.offsetTop;
+  window.scrollTo({
+    top: offsetTop,
+    behavior: "smooth",
+  });
+}

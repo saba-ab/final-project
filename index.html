@@ -26,10 +26,10 @@
           <div class="navigation">
             <nav>
               <ul>
-                <li><a href="#aboutUs">ჩვენ შესახებ</a></li>
-                <li><a href="#">პროდუქტები</a></li>
-                <li><a href="#">მომსახურეობა</a></li>
-                <li><a href="#">კონტაქტი</a></li>
+                <li><p onclick="scrollToSection('aboutUs')">ჩვენ შესახებ</p></li>
+                <li><p onclick="scrollToSection('products')">პროდუქტები</p></li>
+                <li><p onclick="scrollToSection('service')">მომსახურეობა</p></li>
+                <li><p onclick="scrollToSection('contacts')">კონტაქტი</p></li>
               </ul>
             </nav>
             <div class="login-register">
@@ -73,9 +73,9 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="aboutUs">
       <div class="container">
-        <div class="about-us" id="aboutUs">
+        <div class="about-us">
           <div class="about-us-img">
             <img
               src="./media/logo/minimalistic_and_modern_logo.png"
@@ -174,7 +174,7 @@
         </div>
       </div>
     </section>
-    <section class="products-sec">
+    <section id="products">
       <div class="container">
         <div class="header-text">
           <h2>პროდუქტები</h2>
@@ -226,7 +226,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="service">
       <div class="container">
         <div class="header-text">
           <h2>მომსახურეობა</h2>
@@ -272,7 +272,7 @@
         </div>
       </div>
     </section>
-    <footer>
+    <footer id="contacts">
       <div class="container">
         <div class="footer-container">
           <div class="footer-info">
