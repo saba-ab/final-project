@@ -7,6 +7,7 @@
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  font-family: "firago-regular";
 }
 .container {
   display: flex;
@@ -165,14 +166,11 @@ body {
   gap: 40px;
 }
 .header-text {
+  font-family: "firago-bold";
   text-align: center;
   font-size: 30px;
   padding: 20px;
   color: rgb(20, 21, 24);
-  /* overflow: hidden;
-  border-right: 1px solid;
-  white-space: nowrap;
-  animation: typewriter 5s steps(20) forwards infinite; */
 }
 
 .why-us-reasons {
@@ -444,6 +442,9 @@ body {
 
 .burger-icon.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
+}
+.resp-navbar {
+  display: none;
 }
 
 @media screen and (max-width: 1240px) {
