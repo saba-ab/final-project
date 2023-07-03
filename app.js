@@ -50,3 +50,30 @@ function scrollToSection(sectionId) {
     behavior: "smooth",
   });
 }
+// burger toggle
+const burgerIcon = document.querySelector(".burger-icon");
+
+function toggleBurger() {
+  burgerIcon.classList.toggle("active");
+}
+// responsive navbar
+const respNavbar = document.querySelector(".resp-navbar");
+
+burgerIcon.addEventListener("click", () => {
+  if (respNavbar.style.display === "block") {
+    respNavbar.style.display = "none";
+  } else {
+    respNavbar.style.display = "block";
+  }
+});
+function checkResolution() {
+  const mediaQuery = window.matchMedia("(min-width: 1241px)");
+
+  if (mediaQuery.matches) {
+    respNavbar.style.display = "none";
+  } else {
+    respNavbar.style.display = "block";
+  }
+}
+
+window.addEventListener("resize", checkResolution);

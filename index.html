@@ -37,6 +37,28 @@
               <button id="register">რეგისტრაცია</button>
             </div>
           </div>
+          
+          <div class="burger-icon" onclick="toggleBurger()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="resp-navbar">
+          <nav>
+            <ul>
+              <li><p onclick="scrollToSection('aboutUs')">ჩვენ შესახებ</p></li>
+              <li><p onclick="scrollToSection('products')">პროდუქტები</p></li>
+              <li><p onclick="scrollToSection('service')">მომსახურეობა</p></li>
+              <li><p onclick="scrollToSection('contacts')">კონტაქტი</p></li>
+              <li>
+              <button id="login">შესვლა</button>
+              </li>
+              <li>
+              <button id="register">რეგისტრაცია</button>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>
@@ -66,7 +88,10 @@
           <div class="swiper-scrollbar"></div>
           <div class="slogan">
             <h1>
-              გააუმჯობესეთ თქვენი პროექტები CER-თან ერთად - სადაც ხარისხს მოაქვს
+              გააუმჯობესეთ თქვენი პროექტები CER-თან ერთად - 
+            </h1>
+            <h1>
+              სადაც ხარისხს მოაქვს
               ეფექტურობა
             </h1>
           </div>
@@ -249,7 +274,7 @@
               </p>
             </div>
           </div>
-          <div class="service-card">
+          <div class="service-card service-card-reverse">
             <div class="service-text">
               <p class="bold">უსაფრთხოება და დოკუმენტაცია</p>
               <p>
@@ -277,13 +302,19 @@
         <div class="footer-container">
           <div class="footer-info">
             <h2>კონტაქტი</h2>
-            <div class="footer-info"></div>
-            <p>დაგვიკავშირდი</p>
-            <a href="tel:+995 568 88 80 68">+995 568 88 80 68</a>
-            <a href="tel:+995 598 89 66 33"">+995 598 89 66 33</a>
-            <p>მოგვწერე</p>
-            <a href="mailto:sabaabjandadze@gmail.com">info@cer.com</a>
-          </div>
+            <div class="num-mail">
+              <div class="number-info">
+                <p>დაგვიკავშირდი</p>
+                <a href="tel:+995 568 88 80 68">+995 568 88 80 68</a>
+                <a href="tel:+995 598 89 66 33"">+995 598 89 66 33</a>
+              </div>
+              <div class="mail-info">
+                <p>მოგვწერე</p>
+                <a href="mailto:sabaabjandadze@gmail.com">info@cer.com</a>
+              </div>
+            </div>
+            </div>
+            
           <div class="footer-logo">
             <img src="./media/logo/logo_design_without_background.png" alt="" />
           </div>
