@@ -15,6 +15,8 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- <div class="register-container"><button class="close-button"></button> -->
+    <!-- </div> -->
     <header>
       <div class="container">
         <div class="header-container">
@@ -33,32 +35,23 @@
               </ul>
             </nav>
             <div class="login-register">
-              <button id="login">შესვლა</button>
-              <button id="register">რეგისტრაცია</button>
             </div>
           </div>
-          
+          <div class="resp-navbar">
+            <nav>
+              <ul>
+                <li><p onclick="scrollToSection('aboutUs')">ჩვენ შესახებ</p></li>
+                <li><p onclick="scrollToSection('products')">პროდუქტები</p></li>
+                <li><p onclick="scrollToSection('service')">მომსახურეობა</p></li>
+                <li><p onclick="scrollToSection('contacts')">კონტაქტი</p></li>
+              </ul>
+            </nav>
+          </div>
           <div class="burger-icon" onclick="toggleBurger()">
             <span></span>
             <span></span>
             <span></span>
           </div>
-        </div>
-        <div class="resp-navbar">
-          <nav>
-            <ul>
-              <li><p onclick="scrollToSection('aboutUs')">ჩვენ შესახებ</p></li>
-              <li><p onclick="scrollToSection('products')">პროდუქტები</p></li>
-              <li><p onclick="scrollToSection('service')">მომსახურეობა</p></li>
-              <li><p onclick="scrollToSection('contacts')">კონტაქტი</p></li>
-              <li>
-              <button id="login">შესვლა</button>
-              </li>
-              <li>
-              <button id="register">რეგისტრაცია</button>
-              </li>
-            </ul>
-          </nav>
         </div>
       </div>
     </header>
@@ -131,7 +124,6 @@
               <h2>რატომ ჩვენ</h2>
             </div>
           </div>
-
           <div class="why-us-reasons">
             <div class="why-us-reason">
               <svg
@@ -294,6 +286,25 @@
               />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="message-api">
+          <div class="message">
+            <p>შეტყობინების გაგზავნა</p>
+            <form id="messageForm">
+              <input type="text" name="firstName" id="firstName" placeholder="სახელი">
+              <input type="text" name="lastName" id="lastName" placeholder="გვარი">
+              <input type="email" name="email" id="email" placeholder="მეილი">
+              <input type="number" name="number" id="number" placeholder="ტელეფონის ნომერი">
+              <textarea name="textMessage" id="textMessage"></textarea>
+              <p id="error"></p>
+              <button type="submit"" id="submit">გაგზავნა</button>
+            </form>
+          </div>
+          <div class="api"></div>
         </div>
       </div>
     </section>
