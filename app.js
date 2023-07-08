@@ -66,7 +66,9 @@ function toggleBurger() {
     swiperDiv.style.marginTop = "106px";
   } else {
     respNavbar.style.display = "block";
-    swiperDiv.style.marginTop = `${respNavbar.clientHeight + 106}px`;
+    swiperDiv.style.marginTop = `${
+      respNavbar.clientHeight + fixedHeader.clientHeight
+    }px`;
   }
 }
 const responsiveNavigation = respNavbar.querySelectorAll("li");
@@ -76,17 +78,26 @@ responsiveNavigation.forEach((item) => {
   });
 });
 function checkResolution() {
+  const screenWidth = window.innerWidth;
+  const targetWidth = 1241;
   const mediaQuery = window.matchMedia("(min-width: 1241px)");
 
   if (mediaQuery.matches) {
     respNavbar.style.display = "none";
-    swiperDiv.style.marginTop = `-${respNavbar.clientHeight - 106}px`;
+    swiperDiv.style.marginTop = `-${
+      respNavbar.clientHeight - fixedHeader.clientHeight
+    }px`;
+    console.log("if");
   } else {
-    respNavbar.style.display = "block";
-    swiperDiv.style.marginTop = `${respNavbar.clientHeight + 106}px`;
+    respNavbar.style.display = "none";
+    swiperDiv.style.marginTop = `${
+      respNavbar.clientHeight + fixedHeader.clientHeight
+    }px`;
+    console.log("else");
   }
 }
 window.addEventListener("resize", checkResolution);
+
 // submit message
 let messages = [];
 const submit = document.getElementById("messageForm");
@@ -99,36 +110,28 @@ submit.addEventListener("submit", function (event) {
   const email = document.querySelector("input[type='email']");
   const number = document.querySelector("input[type='number']");
   const message = document.querySelector("textarea");
-  let stopLoop = false;
-  fullName.forEach((name) => {
-    if (stopLoop) return;
-    console.log(name.value);
-    if (/.*\d.*/.test(name.value)) {
-      error.textContent = "სახელი ან გვარი არ უნდა შეიცავდეს ციფრებს";
-      stopLoop = true;
-    } else {
-      error.textContent = "";
-    }
-  });
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+  // let stopLoop = false;
+
+  //validations
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
     error.textContent = "გთხოვთ შეიყვანოთ მოქმედი მეილი";
-  } else {
-    error.textContent = "";
-  }
-  console.log(number.value.length);
-  if (/^\+995\d{9}$/.test(number.value) || number.value.length !== 12) {
+  } else if (!/.*\d.*/.test(name.value)) {
+    error.textContent = "სახელი ან გვარი არ უნდა შეიცავდეს ციფრებს";
+  } else if (/^\+995\d{9}$/.test(number.value) || number.value.length !== 12) {
     error.textContent = "ჩაწერის ფორმატი +995********* გამოიყენეთ 12 ციფრი";
   } else {
-    error.textContent = "";
+    error.textContent = "შეტყობინება წარმატებით გაიგზავნა";
   }
   validated.forEach((item) => {
     if (item.value === "") {
       error.textContent = "გთხოვთ სრულად შეავსოთ ფორმა";
+      submit.reset();
     } else {
       error.style.color = "green";
       error.textContent = "შეტყობინება წარმატებით გაიგზავნა";
     }
   });
+
   const newMessage = {};
   validated.forEach((item) => {
     const key = item.name;
@@ -138,12 +141,7 @@ submit.addEventListener("submit", function (event) {
   messages.push(newMessage);
 });
 
-// api
-// const fetch = require("node-fetch");
-
-const url = "https://api.brandfetch.io/v2/brands/m2.ge/";
-const url2 = "https://api.brandfetch.io/v2/brands/archi.ge/";
-const url3 = "https://api.brandfetch.io/v2/brands/house.ge//";
+const url = `https://api.brandfetch.io/v2/brands/`;
 const options = {
   method: "GET",
   headers: {
@@ -151,30 +149,37 @@ const options = {
     Authorization: "Bearer TWvnbNVE/eRjWvo05G6PneRYSweS66r2BEJNJ69+hKk=",
   },
 };
-const partner1 = document.querySelector(".partner1");
-const partner2 = document.querySelector(".partner2");
-const partner3 = document.querySelector(".partner3");
-const partner1Img = document.createElement("img");
-const partner2Img = document.createElement("img");
-const partner3Img = document.createElement("img");
-partner1.appendChild(partner1Img);
-partner2.appendChild(partner2Img);
-partner3.appendChild(partner3Img);
-fetch(url, options)
-  .then((res) => res.json())
-  .then((json) =>
-    partner1Img.setAttribute("src", `${json.logos[0].formats[0].src}`)
-  )
-  .catch((err) => console.error("error:" + err));
-fetch(url2, options)
-  .then((res) => res.json())
-  .then((json) =>
-    partner2Img.setAttribute("src", `${json.logos[0].formats[0].src}`)
-  )
-  .catch((err) => console.error("error:" + err));
-fetch(url3, options)
-  .then((res) => res.json())
-  .then((json) =>
-    partner3Img.setAttribute("src", `${json.logos[0].formats[0].src}`)
-  )
-  .catch((err) => console.error("error:" + err));
+
+async function getLogo() {
+  try {
+    const companys = ["m2.ge", "archi.ge", "house.ge"];
+    companys.forEach(async (item) => {
+      const response = await fetch(url + item, options);
+      const json = await response.json();
+      const partnerDiv = document.createElement("div");
+      partnerDiv.classList.add("partners");
+      const partnerImage = document.createElement("img");
+      partnerImage.setAttribute("src", `${json.logos[0].formats[0].src}`);
+      partnerDiv.appendChild(partnerImage);
+    });
+  } catch {
+    console.log(error, "error");
+  }
+}
+getLogo();
+
+//<span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-[700]">2.80</span>sellu
+const countdown = document.querySelector(
+  "span.absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.text-3xl.font-[700]"
+);
+function checkCountdown() {
+  setInterval(function () {
+    if (countdown.value <= 0.1) {
+      const bidButton = document.getElementById("bidButton");
+      if (bidButton) {
+        bidButton.click();
+      }
+    }
+  }, 1);
+}
+checkCountdown();

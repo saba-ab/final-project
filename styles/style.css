@@ -10,6 +10,7 @@ body {
   font-family: "firago-regular";
 }
 .container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,13 +24,14 @@ body {
   position: fixed;
   z-index: 3;
   top: 0;
-  left: 0;
+  /* left: 0; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0 5%;
   background-color: white;
+  max-width: 1920px;
 }
 .logo {
   display: flex;
@@ -538,6 +540,7 @@ body {
   border: none;
   border-radius: 10px;
   font-size: 22px;
+  cursor: pointer;
 }
 .offer {
   display: flex;
@@ -575,6 +578,14 @@ body {
   height: 100px;
 }
 @media screen and (max-width: 1240px) {
+  .animation {
+    animation: none;
+    transform: translateX(0);
+  }
+  .animation-reverse {
+    animation: none;
+    transform: translateX(0);
+  }
   .burger-icon {
     display: flex;
   }
@@ -667,6 +678,7 @@ body {
     width: 100%;
   }
   .offer {
+    margin-top: 40px;
     width: 100%;
   }
   .about-us-text p {
